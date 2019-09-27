@@ -12,7 +12,7 @@ class UsuarioDAO{
 	}
 		
 	public function apagar(){
-		$sql = "DELETE FROM usuarios WHERE id_do_usuario = $id";
+		$sql = "DELETE FROM usuario WHERE id_do_usuario = $id";
 		$rs = $this->con->query($rs);
 		if ($rs) header ("Location: usuarios.php");
 		else echo $this->con->error;
@@ -35,8 +35,18 @@ class UsuarioDAO{
 		while ($linha = $rs -> fetch_object()){
 			$listaDeUsuarios[] = $linha;
 		}
+		
 		return $listaDeUsuarios;
 	}
+public function trocarsenha($id,$senha){
+		$sql = "UPDATE usuario SET senha = md5($senha) WHERE idUsuario = $id";
+		$rs = $this ->con -> query($sql);
+		$listaDeUsuarios = array();
+		if ($rs) header("Location: usuarios.php");
+		else echo $this->con->error;
+		}
+		
+	
 
 }
 
