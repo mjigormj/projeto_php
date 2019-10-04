@@ -112,11 +112,16 @@ $lista = $usuarioDAO->buscar();
 </div>
 
 
-<!-- Modal-inserir -->
+<!-- Modal-inserir --><!--
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro do usuário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
         <div class="modal-body">
           
         </div>
@@ -149,7 +154,46 @@ $lista = $usuarioDAO->buscar();
           </div>
         </div>
       </div>
+    </div>-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro do usuário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="UsuariosController.php?acao=inserir" method="POST">
+  <div class="form-group">
+    <label for="nome">Nome de usuário</label>
+    <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome completo">
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Endereço do email</label>
+    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
+    <small id="email" class="form-text text-muted">Nós nunca compartilharemos seu email com ninguém.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Senha</label>
+    <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Verificar</label>
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </form>
     </div>
+  </div>
+</div>
 
 <!-- Modal Trocar Senha -->
 <div class="modal fade" id="modalSenha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -160,18 +204,19 @@ $lista = $usuarioDAO->buscar();
         <h5 class="modal-title" id="exampleModalLabel">Alterar Senha</h5>
         <button type="button" class="close" data-dismiss="modal" ari></button>
           <div class="modal-body">
-        <form action="UsuariosController.php?acao=inserir" method="POST">
+        <form action="UsuariosController.php?acao=trocarsenha" method="POST">
           <input type="hidden" name="campo-id">                     
           <div class="form-group">
             <label for="exampleInputPassword1">Senha</label>
             <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
           </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
-
+            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           </div>
         </div>
       </div>
     </div>
+      </body>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -185,5 +230,5 @@ $lista = $usuarioDAO->buscar();
         
       });
     </script>
-  </body>
+
   </html>
