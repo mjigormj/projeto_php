@@ -27,7 +27,7 @@ $lista = $usuarioDAO->buscar();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="usuarios.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="questoes.php">Questões</a>
@@ -60,7 +60,7 @@ $lista = $usuarioDAO->buscar();
 
         <ul class="nav flex-column naw-pills vertical">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link active" href="usuarios.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -74,32 +74,28 @@ $lista = $usuarioDAO->buscar();
         </ul>
       </div>
       <div class="col-10">
-        <h3>Usuários</h3>
+        <h3>Questões</h3>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          <i class="fas fa-user-plus"></i>Novo Usuário
+            Nova questão
         </button>
         </button>
         <table class="table">
           <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>E-mail</th>
+            <th>Número da quetão</th>
+            <th>Questão</th>
             <th>Ações</th>
           </tr>
           <?php foreach ($lista as $usuario) : ?>
             <tr>
               <td><?= $usuario->id_do_usuario ?></td>
               <td><?= $usuario->nome ?></td>
-              <td><?= $usuario->email ?></td>
               <td>
                 <a class="btn btn-danger" href="UsuariosController.php?acao=apagar&id=<?= $usuario->id_do_usuario ?>">
-                  <i class="fas fa-user-times"></i>
+                    Exluir
                 </a>
-                <button class="btn btn-warning">
-                  <i class="fas fa-user-edit"></i>
-                </button>
                 <button type="button" class="btn btn-primary alterar-senha" data-toggle="modal" data-target="
-              #modalSenha" data-id="<?= $usuario->id_do_usuario ?>"> <i class="fas fa-user-lock"></i>
+              #modalSenha" data-id="<?= $usuario->id_do_usuario ?>">
+              Editar
                 </button>
 
               </td>

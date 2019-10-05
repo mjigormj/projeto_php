@@ -39,7 +39,7 @@ class UsuarioDAO{
 		return $listaDeUsuarios;
 	}
 public function trocarsenha($id,$senha){
-		$sql = "UPDATE usuario SET senha = md5($senha) WHERE id_do_usuario = $id";
+		$sql = "UPDATE projeto-bd SET senha = md5($senha) WHERE usuario-$id";
 		$rs = $this ->con -> query($sql);
 		$listaDeUsuarios = array();
 		if ($rs) header("Location: usuarios.php");
