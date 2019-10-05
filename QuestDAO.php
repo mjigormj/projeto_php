@@ -1,44 +1,43 @@
 <?php
 
-class UsuarioDAO{
-	public $nome;
-	public $email;
-	public $senha;
+class QuestDAO{
+	public $questao;
 
 	private $con;
 
 	function __construct(){
 		$this->con = mysqli_connect("localhost", "root", "vertrigo", "projeto-bd");
+    }
+    
+    public function inserir(){
+		$sql = "INSERT INTO questoesbd VALUES (0, '$this->questao')";
+		$rs = $this->con->query($sql);
+		if ($rs) 
+			header("Location: questoes.php");
+		else 
+			echo $this->con->error;
+
 	}
-		
 	public function apagar(){
 		$sql = "DELETE FROM usuarios WHERE usuario-$id ";
 		$rs = $this->con->query($sql);
 		if ($rs) header ("Location: usuarios.php");
 		else echo $this->con->error;
 	}
-	public function inserir(){
-		$sql = "INSERT INTO usuario VALUES (0, '$this->nome', '$this->email', 
-			md5('$this->senha'))";
-		$rs = $this->con->query($sql);
-		if ($rs) 
-			header("Location: usuarios.php");
-		else 
-			echo $this->con->error;
 
-	}
 	public function buscar(){
 		$con = mysqli_connect("localhost", "root", "vertrigo", "projeto-bd");
-		$sql = "SELECT * FROM usuario";
-		$rs = $this->con->query($sql);
-		$listaDeUsuarios = array();
+		$sql = "SELECT * FROM questoesbd";
+		$rs = $this->con-> query($sql);
+		$listaDeQuestoes = array();
 		while ($linha = $rs -> fetch_object()){
-			$listaDeUsuarios[] = $linha;
+
+			$listaDeQuestoes[] = $linha;
 		}
 		
-		return $listaDeUsuarios;
+		return $listaDeQuestoes;
 	}
-public function trocarsenha($id,$senha){
+public function trocarsenha($questao){
 		$sql = "UPDATE projeto-bd SET senha = md5($senha) WHERE usuario-$id";
 		$rs = $this ->con -> query($sql);
 		$listaDeUsuarios = array();

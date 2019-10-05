@@ -1,8 +1,8 @@
 <?php
-include "UsuarioDAO.php";
+include "QuestDAO.php";
 
-$usuarioDAO = new UsuarioDAO();
-$lista = $usuarioDAO->buscar();
+$questDAO = new QuestDAO();
+$lista = $questDAO->buscar();
 
 ?>
 <!Doctype html>
@@ -19,6 +19,7 @@ $lista = $usuarioDAO->buscar();
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -30,7 +31,7 @@ $lista = $usuarioDAO->buscar();
           <a class="nav-link" href="usuarios.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="questoes.php">Questões</a>
+         <h5><a class="nav-link" href="questoes.php">Questões</a></h5>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,7 +48,7 @@ $lista = $usuarioDAO->buscar();
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0" action="UsuariosController.php">
+      <form class="form-inline my-2 my-lg-0" action="QuestController.php">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
@@ -81,20 +82,20 @@ $lista = $usuarioDAO->buscar();
         </button>
         <table class="table">
           <tr>
-            <th>Número da quetão</th>
+            <th>Número da questão</th>
             <th>Questão</th>
             <th>Ações</th>
           </tr>
-          <?php foreach ($lista as $usuario) : ?>
+          <?php foreach ($lista as $questoesbd) : ?>
             <tr>
-              <td><?= $usuario->id_do_usuario ?></td>
-              <td><?= $usuario->nome ?></td>
+              <td><?= $questoesbd->id_quest?></td>
+              <td><?= $questoesbd->questao ?></td>
               <td>
-                <a class="btn btn-danger" href="UsuariosController.php?acao=apagar&id=<?= $usuario->id_do_usuario ?>">
+                <a class="btn btn-danger" href="QuestController.php?acao=apagar&id=<?= $questoesbd->id_quest ?>">
                     Exluir
                 </a>
                 <button type="button" class="btn btn-primary alterar-senha" data-toggle="modal" data-target="
-              #modalSenha" data-id="<?= $usuario->id_do_usuario ?>">
+              #modalSenha" data-id="<?= $questoesbd->id_quest ?>">
               Editar
                 </button>
 
@@ -107,36 +108,22 @@ $lista = $usuarioDAO->buscar();
   </div>
 
 
-  <!-- Modal-inserir -->
+  <!-- Modal-inserir-quest -->
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Cadastro do usuário</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Cadastro de questões</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form action="UsuariosController.php?acao=inserir" method="POST">
+          <form action="QuestController.php?acao=inserir" method="POST">
             <div class="form-group">
-              <label for="nome">Nome de usuário</label>
-              <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome completo">
-
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Endereço do email</label>
-              <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
-              <small id="email" class="form-text text-muted">Nós nunca compartilharemos seu email com ninguém.</small>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Senha</label>
-              <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
-            </div>
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Verificar</label>
+              <label for="nome">Nova questão</label>
+              <input type="text" name="questao" class="form-control" id="questao" placeholder="Escreva">
             </div>
         </div>
         <div class="modal-footer">
@@ -158,7 +145,7 @@ $lista = $usuarioDAO->buscar();
             <span aria-hidden="true"> &times;</span>
           </button>
           <div class="modal-body">
-            <form action="UsuariosController.php?acao=trocarsenha" method="POST">
+            <form action="QuestController.php?acao=trocarsenha" method="POST">
               <div class="input-group ab-3">
               </div>
 
