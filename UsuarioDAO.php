@@ -8,11 +8,11 @@ class UsuarioDAO{
 	private $con;
 
 	function __construct(){
-		$this->con = mysqli_connect("localhost", "root", "etecia", "projeto-bd");
+		$this->con = mysqli_connect("localhost", "root", "vertrigo", "projeto-bd");
 	}
 		
 	public function apagar(){
-		$sql = "DELETE FROM usuario WHERE id_do_usuario = $id";
+		$sql = "DELETE FROM usuarios WHERE usuario-$id ";
 		$rs = $this->con->query($sql);
 		if ($rs) header ("Location: usuarios.php");
 		else echo $this->con->error;
@@ -28,7 +28,7 @@ class UsuarioDAO{
 
 	}
 	public function buscar(){
-		$con = mysqli_connect("localhost", "root", "etecia", "projeto-bd");
+		$con = mysqli_connect("localhost", "root", "vertrigo", "projeto-bd");
 		$sql = "SELECT * FROM usuario";
 		$rs = $con -> query($sql);
 		$listaDeUsuarios = array();

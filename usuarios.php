@@ -6,16 +6,16 @@ $lista = $usuarioDAO->buscar();
 
 ?>
 <!Doctype html>
-<html>
+<html lang="pt-br">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="width=device=width, initial-scale=1.0">
   <title> </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="
   sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
   <link rel ="stylesheet" type = "text/css" href="css/all.min.css">
-
 </head>
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -29,7 +29,7 @@ $lista = $usuarioDAO->buscar();
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="questões.php">Questões</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,9 +46,7 @@ $lista = $usuarioDAO->buscar();
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-
-
-      <form class="form-inline my-2 my-lg-0">
+      <form class="form-inline my-2 my-lg-0" action="UsuariosController.php">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
@@ -58,9 +56,10 @@ $lista = $usuarioDAO->buscar();
   <div class="container-fluid">
     <div class="row">
       <div class="col-2">
+
         <ul class="nav flex-column naw-pills vertical">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
+            <a class="nav-link active" href="#">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -76,9 +75,8 @@ $lista = $usuarioDAO->buscar();
       <div class="col-10">
         <h3>Usuários</h3>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          Novo Usuário
+          <i class="fas fa-user-plus"></i>Novo Usuário
         </button>
-        <i class="fas fa-user-tie"></i>
       </button>
       <table class="table">
         <tr>
@@ -112,49 +110,7 @@ $lista = $usuarioDAO->buscar();
 </div>
 
 
-<!-- Modal-inserir --><!--
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cadastro do usuário</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <div class="modal-body">
-          
-        </div>
-      </div>
-        <form action="UsuariosController.php?acao=inserir" method="POST">
-          <div class="form-group">
-            
-
-            <label for="exampleInputPassword1">Nome de usuário</label>
-            <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome completo">
-
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Endereço do email</label>
-            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
-            <small id="email" class="form-text text-muted">Nós nunca compartilharemos seu email com ninguém.</small>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Senha</label>
-            <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Verificar</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Salvar</button>
-          </div>
-        </div>
-      </div>
-    </div>-->
+<!-- Modal-inserir -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -199,19 +155,26 @@ $lista = $usuarioDAO->buscar();
 <div class="modal fade" id="modalSenha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-    </div>
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Alterar Senha</h5>
-        <button type="button" class="close" data-dismiss="modal" ari></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="class">
+          <span aria-hidden="true"> &times;</span>
+        </button>
           <div class="modal-body">
         <form action="UsuariosController.php?acao=trocarsenha" method="POST">
-          <input type="hidden" name="campo-id">                     
-          <div class="form-group">
+        <div class="input-group ab-3">
+        </div>
+
+          <input type="hidden" name="campo-id" id="campo-id">                     
+          <div class="input-group ab-3">
+
             <label for="exampleInputPassword1">Senha</label>
-            <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
+            <input type="password" name="senha" class="form-control" placeholder="senha" aria-label="nome" aria-describe="basic-addans">
           </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Salvar</button>
             <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </form>
           </div>
         </div>
       </div>

@@ -21,7 +21,7 @@ case 'trocarsenha':
 		$usuario = new UsuarioDAO();
 		$id = $_GET["id"];
 		$senha = $_POST["senha"];
-		$usuario->trocarsenha($id,$senha);
+		$usuario->trocarsenha($id, $senha);
 		break;
 
 	default:
