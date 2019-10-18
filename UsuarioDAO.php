@@ -8,11 +8,11 @@ class UsuarioDAO{
 	private $con;
 
 	function __construct(){
-		$this->con = mysqli_connect("localhost", "root", "vertrigo", "projeto-bd");
+		$this->con = mysqli_connect("localhost:3307", "root", "", "usuario");
 	}
 		
-	public function apagar(){
-		$sql = "DELETE FROM usuarios WHERE usuario-$id ";
+	public function apagar($id){
+		$sql = "DELETE FROM usuario WHERE id_do_usuario=$id";
 		$rs = $this->con->query($sql);
 		if ($rs) header ("Location: usuarios.php");
 		else echo $this->con->error;
@@ -28,7 +28,7 @@ class UsuarioDAO{
 
 	}
 	public function buscar(){
-		$con = mysqli_connect("localhost", "root", "vertrigo", "projeto-bd");
+		$con = mysqli_connect("localhost:3307", "root", "", "usuario");
 		$sql = "SELECT * FROM usuario";
 		$rs = $this->con->query($sql);
 		$listaDeUsuarios = array();
@@ -39,7 +39,7 @@ class UsuarioDAO{
 		return $listaDeUsuarios;
 	}
 public function trocarsenha($id,$senha){
-		$sql = "UPDATE projeto-bd SET senha = md5($senha) WHERE usuario-$id";
+		$sql = "UPDATE usuario SET senha = md5('$senha') WHERE id_do_usuario=$id";
 		$rs = $this ->con -> query($sql);
 		$listaDeUsuarios = array();
 		if ($rs) header("Location: usuarios.php");
