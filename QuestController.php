@@ -20,7 +20,7 @@ switch ($acao) {
 		$questoes = new QuestDAO();
 		$id = $_GET["id_quest"];
 		$questao = $_POST["questao"];
-		$usuario->trocarsenha($id, $senha);
+		$usuario->editarquest($id, $senha);
 		break;
 
 	default:

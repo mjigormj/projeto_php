@@ -6,7 +6,7 @@ class QuestDAO{
 	private $con;
 
 	function __construct(){
-		$this->con = mysqli_connect("localhost", "root", "vertrigo", "projeto-bd");
+		$this->con = mysqli_connect("localhost", "root", "", "projeto-bd");
     }
     
     public function inserir(){
@@ -18,7 +18,7 @@ class QuestDAO{
 			echo $this->con->error;
 
 	}
-	public function apagar(){
+	public function apagar($id){
 		$sql = "DELETE FROM usuarios WHERE usuario-$id ";
 		$rs = $this->con->query($sql);
 		if ($rs) header ("Location: usuarios.php");
@@ -37,7 +37,7 @@ class QuestDAO{
 		
 		return $listaDeQuestoes;
 	}
-public function trocarsenha($questao){
+public function editarquest($questao){
 		$sql = "UPDATE projeto-bd SET senha = md5($senha) WHERE usuario-$id";
 		$rs = $this ->con -> query($sql);
 		$listaDeUsuarios = array();
