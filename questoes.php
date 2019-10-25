@@ -36,7 +36,7 @@ include "menu.php";
           </tr>
           <?php foreach ($lista as $questoesbd) : ?>
             <tr>
-              <td><?= $questoesbd->id_quest?></td>
+              <td><?= $questoesbd->id_questao ?></td>
               <td><?= $questoesbd->questao ?></td>
               <td>
                 <a class="btn btn-danger" href="QuestController.php?acao=apagar&id=<?= $questoesbd->id_quest ?>">
@@ -100,8 +100,8 @@ include "menu.php";
               <input type="hidden" name="id" id="campo-id">
               <div class="input-group ab-3">
 
-                <label for="exampleInputPassword1">Senha</label>
-                <input type="password" name="senha" class="form-control" placeholder="senha" aria-label="nome" aria-describe="basic-addans">
+                <label for="exampleInputPassword1">Edit</label>
+                <input type="text" name="questao" class="form-control" id="questao" placeholder="Escreva">
               </div>
           </div class="modal-footer">
           <button type="submit" class="btn btn-primary">Salvar</button>

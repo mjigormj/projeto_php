@@ -10,7 +10,7 @@ class QuestDAO{
     }
     
     public function inserir(){
-		$sql = "INSERT INTO usuario VALUES (0, '$this->questao')";
+		$sql = "INSERT INTO questoesbd VALUES (0, '$this->questao')";
 		$rs = $this->con->query($sql);
 		if ($rs) 
 			header("Location: questoes.php");
@@ -37,7 +37,7 @@ class QuestDAO{
 		return $listaDeQuestoes;
 	}
 public function editarquest($questao){
-		$sql = "UPDATE questoesbd SET senha = md5($senha) WHERE questoesbd=$id";
+		$sql = "UPDATE questoesbd SET questao WHERE questoesbd=$id";
 		$rs = $this ->con -> query($sql);
 		$listaDeUsuarios = array();
 		if ($rs) header("Location: questoesbd.php");
