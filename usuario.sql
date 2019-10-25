@@ -1,23 +1,25 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.9
--- http://www.phpmyadmin.net
+-- version 4.8.4
+-- https://www.phpmyadmin.net/
 --
--- Máquina: localhost
--- Data de Criação: 12-Set-2019 às 01:17
--- Versão do servidor: 5.7.20-log
--- versão do PHP: 5.3.27
+-- Host: 127.0.0.1
+-- Generation Time: 04-Out-2019 às 03:18
+-- Versão do servidor: 5.7.21-log
+-- versão do PHP: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de Dados: `projetopw`
+-- Database: `projeto-bd`
 --
 
 -- --------------------------------------------------------
@@ -26,23 +28,38 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `id_do_usuario` int(11) NOT NULL,
+CREATE TABLE `usuario` (
+  `id_do_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
-  `e-mail` varchar(200) NOT NULL,
-  `senha` varchar(200) NOT NULL
+  `email` varchar(200) NOT NULL,
+  `senha` varchar(200) NOT NULL,
+  Primary Key(id_do_usuario)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id_do_usuario`, `nome`, `e-mail`, `senha`) VALUES
-(0, 'jão', 'nearwiner1234567@gmail.com', '5454'),
-(0, 'joao', 'nearwiner1234567@gmail.com', '3123'),
-(0, 'jão', 'nearwiner1234567@gmail.com', '34536'),
-(0, 'jão', 'nearwiner1234567@gmail.com', '3612645'),
-(0, 'jão', 'nearwiner1234567@gmail.com', '35641');
+INSERT INTO `usuario` (`id_do_usuario`, `nome`, `email`, `senha`) VALUES
+(1, 'as', 'as@gmailo.com', 'd41d8cd98f00b204e9800998ecf8427e'),
+(2, 'asd', 'as@gmailo.com', 'd41d8cd98f00b204e9800998ecf8427e'),
+(3, 'joao', 'joao@etecia.combr', '202cb962ac59075b964b07152d234b70');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `usuario`
+--
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `usuario`
+--
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

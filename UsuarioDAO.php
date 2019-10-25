@@ -8,9 +8,9 @@ class UsuarioDAO{
 	private $con;
 
 	function __construct(){
-		$this->con = mysqli_connect("localhost:3307", "root", "", "usuario");
-	}
-		
+		$this->con = mysqli_connect("localhost:3306", "root", "etecia", "projeto");
+	
+	}	
 	public function apagar($id){
 		$sql = "DELETE FROM usuario WHERE id_do_usuario=$id";
 		$rs = $this->con->query($sql);
@@ -28,7 +28,6 @@ class UsuarioDAO{
 
 	}
 	public function buscar(){
-		$con = mysqli_connect("localhost:3307", "root", "", "usuario");
 		$sql = "SELECT * FROM usuario";
 		$rs = $this->con->query($sql);
 		$listaDeUsuarios = array();
