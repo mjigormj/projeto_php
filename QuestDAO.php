@@ -6,22 +6,22 @@ class QuestDAO{
 	private $con;
 
 	function __construct(){
-		$this->con = mysqli_connect("localhost:3306", "root", "", "projeto");
+		$this->con = mysqli_connect("localhost:3307", "root", "", "bd");
     }
     
     public function inserir(){
 		$sql = "INSERT INTO questoesbd VALUES (0, '$this->questao')";
 		$rs = $this->con->query($sql);
 		if ($rs) 
-			header("Location: questoes.php");
+			header("Location:/questoes");
 		else 
 			echo $this->con->error;
 
 	}
 	public function apagar($id){
-		$sql = "DELETE FROM questoesbd WHERE questoesbd=$id ";
+		$sql = "DELETE FROM questoesbd WHERE id_questao=$id ";
 		$rs = $this->con->query($sql);
-		if ($rs) header ("Location: questoesbd.php");
+		if ($rs) header ("Location:/questoes");
 		else echo $this->con->error;
 	}
 
@@ -36,13 +36,16 @@ class QuestDAO{
 		
 		return $listaDeQuestoes;
 	}
-public function editarquest($questao){
-		$sql = "UPDATE questoesbd SET questao WHERE questoesbd=$id";
+	public function editarquest($id,$questao){
+		$sql = "UPDATE questoesbd SET questao='$questao' WHERE id_questao=$id";
 		$rs = $this ->con -> query($sql);
 		$listaDeUsuarios = array();
-		if ($rs) header("Location: questoesbd.php");
+		if ($rs) header("Location:/questoes");
 		else echo $this->con->error;
 		}
+
+
+	
 		
 	
 

@@ -13,14 +13,14 @@ switch ($acao) {
 	case 'apagar':
 		$questoes = new QuestDAO();
 		$id = $_GET["id"];
-		$usuario->apagar($id);
+		$questoes->apagar($id);
 		break;
 
     case 'editar':
-		$questoes = new QuestDAO();
-		$id = $_GET["id_quest"];
+		$questoesbd = new QuestDAO();
+		$id = $_POST["id"];
 		$questao = $_POST["questao"];
-		$usuario->editarquest($id, $nquest);
+		$questoesbd->editarquest($id,$questao);
 		break;
 
 	default:

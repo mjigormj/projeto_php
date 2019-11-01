@@ -17,11 +17,18 @@ switch ($acao) {
 		$usuario->apagar($id);
 		break;
 
-case 'trocarsenha':
+	case 'trocarsenha':
 		$usuario = new UsuarioDAO();
 		$id = $_POST["id"];
 		$senha = $_POST["senha"];
 		$usuario->trocarsenha($id, $senha);
+		break;
+
+		case 'editar':
+		$usuario = new UsuarioDAO();
+		$id = $_POST["id"];
+		$usuarios = $_POST["usuario"];
+		$usuario->editarUsuario($id,$usuario);
 		break;
 
 	default:

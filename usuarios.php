@@ -45,9 +45,11 @@ include "menu.php";
                 <a class="btn btn-danger" href="UsuariosController.php?acao=apagar&id=<?= $usuario->id_do_usuario ?>">
                   <i class="fas fa-user-times"></i>
                 </a>
-                <button class="btn btn-warning">
-                  <i class="fas fa-user-edit"></i>
+                  
+                <button type="button" class="btn btn-warning editar" data-toggle="modal" data-target="
+              #modalEditar" data-id="<?= $usuario->id_do_usuario ?>"> <i class="fas fa-user-edit"></i>
                 </button>
+
                 <button type="button" class="btn btn-primary alterar-senha" data-toggle="modal" data-target="
               #modalSenha" data-id="<?= $usuario->id_do_usuario ?>"> <i class="fas fa-user-lock"></i>
                 </button>
@@ -87,6 +89,39 @@ include "menu.php";
             <div class="form-group">
               <label for="exampleInputPassword1">Senha</label>
               <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal-Editar -->
+
+  <div class="modal fade" id="exampleEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar informações do usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="UsuariosController.php?acao=editarUsuario" method="POST">
+            <div class="form-group">
+              <label for="nome">Nome de usuário</label>
+              <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome completo">
+
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Endereço do email</label>
+              <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
+              <small id="email" class="form-text text-muted">Nós nunca compartilharemos seu email com ninguém.</small>
             </div>
         </div>
         <div class="modal-footer">

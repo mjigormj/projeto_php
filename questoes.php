@@ -39,11 +39,11 @@ include "menu.php";
               <td><?= $questoesbd->id_questao ?></td>
               <td><?= $questoesbd->questao ?></td>
               <td>
-                <a class="btn btn-danger" href="QuestController.php?acao=apagar&id=<?= $questoesbd->id_quest ?>">
+                <a class="btn btn-danger" href="QuestController.php?acao=apagar&id=<?= $questoesbd->id_questao?>">
                     Exluir
                 </a>
-                <button type="button" class="btn btn-primary alterar-senha" data-toggle="modal" data-target="
-              #modalSenha" data-id="<?= $questoesbd->id_quest ?>">
+                <button type="button" class="btn btn-primary alterar-questao" data-toggle="modal" data-target="
+              #modalEditar" data-id="<?=$questoesbd->id_questao?>">
               Editar
                 </button>
 
@@ -83,8 +83,8 @@ include "menu.php";
     </div>
   </div>
 
-  <!-- Modal Trocar Senha --- Editar questão-->
-  <div class="modal fade" id="modalSenha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Editar questão-->
+  <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -93,14 +93,14 @@ include "menu.php";
             <span aria-hidden="true"> &times;</span>
           </button>
           <div class="modal-body">
-            <form action="QuestController.php?acao=editarquest" method="POST">
+            <form action="QuestController.php?acao=editar" method="POST">
               <div class="input-group ab-3">
               </div>
 
               <input type="hidden" name="id" id="campo-id">
               <div class="input-group ab-3">
 
-                <label for="exampleInputPassword1">Edit</label>
+                <label for="exampleInputQuest">Edit</label>
                 <input type="text" name="questao" class="form-control" id="questao" placeholder="Escreva">
               </div>
           </div class="modal-footer">
@@ -118,10 +118,10 @@ include "menu.php";
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-  var botao = document.querySelector(".alterar-senha");
+  var botao = document.querySelector(".alterar-questao");
   botao.addEventListener("click", function() {
     var campo = document.querySelector("#campo-id");
-    campo.value = botao.getAttibute("data-id");
+    campo.value = botao.getAttribute("data-id");
 
   });
 </script>
