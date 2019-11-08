@@ -6,7 +6,7 @@ class QuestDAO{
 	private $con;
 
 	function __construct(){
-		$this->con = mysqli_connect("localhost:3307", "root", "", "bd");
+		$this->con = mysqli_connect("localhost", "root", "etecia", "bd");
     }
     
     public function inserir(){

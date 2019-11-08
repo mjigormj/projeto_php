@@ -9,7 +9,7 @@ class UsuarioDAO{
 	private $con;
 
 	function __construct(){
-		$this->con = mysqli_connect("localhost:3307", "root", "", "bd");
+		$this->con = mysqli_connect("localhost", "root", "etecia", "bd");
 	
 	}	
 	public function apagar($id){
@@ -18,6 +18,7 @@ class UsuarioDAO{
 		if ($rs) header ("Location:/usuarios");
 		else echo $this->con->error;
 	}
+
 	public function inserir(){
 		$sql = "INSERT INTO usuario VALUES (0, '$this->nome', '$this->email', 
 			md5('$this->senha'))";
@@ -41,18 +42,32 @@ class UsuarioDAO{
 	public function trocarsenha($id,$senha){
 		$sql = "UPDATE usuario SET senha = md5('$senha') WHERE id_do_usuario=$id";
 		$rs = $this ->con -> query($sql);
-		$listaDeUsuarios = array();
 		if ($rs) header("Location: /usuarios");
 		else echo $this->con->error;
 		}
 
-	public function editarUsuario($id,$usuario){
-		$sql = "UPDATE usuario SET usuarios='$usuarios' WHERE id_do_usuario=$id";
+	public function editarusuario($id, $nome, $email){
+		$sql = "UPDATE usuario SET nome='$nome', email='$email' WHERE id_do_usuario=$id";
 		$rs = $this ->con -> query($sql);
-		$listaDeUsuarios = array();
+		echo $sql;
 		if ($rs) header("Location:/usuarios");
 		else echo $this->con->error;
 		}
+
+
+
+		PUBLIC function logar(){
+			$sql = "SELECT * FROM usuario WHERE email = '$this -> email'
+				AND senha = md5('$this -> senha')";
+			$rs = $this -> con -> query($sql);
+			if ($rs->num_row>0){
+				session_start();
+				$_SESSION["logado"]=true;
+				header("Location:/usuarios");
+			else 
+				header ("Location:/");
+		}
+	}
 }
 
 

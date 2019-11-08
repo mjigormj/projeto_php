@@ -1,0 +1,1 @@
+AI desativada em usuarios -> bd
