@@ -117,15 +117,24 @@ include "menu.php";
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
   var botao = document.querySelector(".alterar-questao");
   botao.addEventListener("click", function() {
     var campo = document.querySelector("#campo-id");
     campo.value = botao.getAttribute("data-id");
 
   });
+</script>-->
+
+<script type="text/javascript">
+	$('.btn-editar').on('click', function (e) {
+	  	var id = e.currentTarget.getAttribute("data-id");
+	  	var enunciado = e.currentTarget.getAttribute("data-enunciado");
+	  	var tipo = e.currentTarget.getAttribute("data-tipo");
+	  	document.querySelector("#campo-id-editar").value = id;
+	  	document.querySelector("#novoenunciado").value = enunciado;
+	  	document.querySelector("#novotipo").value = tipo;
+	});
 </script>
-
-
 
 </html>

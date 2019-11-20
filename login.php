@@ -31,22 +31,19 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<form action="UsuariosController.php?acao=logar" mehod="POST">
+			<form action="UsuariosController.php?acao=login" method="POST">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" name="email" class="form-control" placeholder="username">
+						<input type="email" class="form-control" placeholder="username" name="email">
 						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" name="senha" class="form-control" placeholder="password">
-					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox">Remember Me
+						<input type="password" class="form-control" placeholder="password" name="senha">
 					</div>
 					<div class="form-group">
 						<input type="submit" value="Login" class="btn float-right login_btn">

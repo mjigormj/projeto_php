@@ -23,6 +23,7 @@ switch ($acao) {
 		$questoesbd->editarquest($id,$questao);
 		break;
 
+
 	default:
 		# code...
 		break;
