@@ -36,6 +36,7 @@ class QuestDAO{
 		
 		return $listaDeQuestoes;
 	}
+
 	public function editarquest($id,$questao){
 		$sql = "UPDATE questoesbd SET questao='$questao' WHERE id_questao=$id";
 		$rs = $this ->con -> query($sql);
@@ -44,16 +45,15 @@ class QuestDAO{
 		else echo $this->con->error;
 		}
 
-
+	public function buscarPorId(){
+		$sql = "SELECT * FROM questoes WHERE id_questao=$this->id";
+		$rs = $this->con->query($sql);
+		if ($linha = $rs->fetch_object()){
+			$this->enunciado = $linha->enunciado;
+			$this->tipo = $linha->tipo;
+		}
 	
-		
-	
-
+	}
 }
-
-
-
-
-
 
 ?>

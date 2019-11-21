@@ -1,30 +1,31 @@
-<?php
-
+<?php 
 include "QuestDAO.php";
 $acao = $_GET["acao"];
-
 switch ($acao) {
+	
 	case 'inserir':
-		$questoesbd = new QuestDAO();
-		$questoesbd->questao = $_POST["questao"];
-		$questoesbd->inserir();
-        break;
-        
+		$questao = new QuestDAO();
+		$questao->enunciado = $_POST["enunciado"];
+		$questao->tipo = $_POST["tipo"];
+		$questao->inserir();
+
+		break;
 	case 'apagar':
-		$questoes = new QuestDAO();
+		$questao = new QuestDAO();
 		$id = $_GET["id"];
-		$questoes->apagar($id);
+		$questao->apagar($id);
 		break;
 
-    case 'editar':
-		$questoesbd = new QuestDAO();
-		$id = $_POST["id"];
-		$questao = $_POST["questao"];
-		$questoesbd->editarquest($id,$questao);
+	case 'editar':
+		$questao = new QuestDAO();
+		$questao->id = $_POST["id"];
+		$questao->enunciado = $_POST["enunciado"];
+		$questao->tipo = $_POST["tipo"];
+		$questao->editar();
 		break;
-
 
 	default:
-		# code...
+		echo "acao não reconhecida";
 		break;
 }
+?>

@@ -23,15 +23,10 @@
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3>Sign In</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
+				<h3>Entrar</h3>
 			</div>
 			<div class="card-body">
-			<form action="UsuariosController.php?acao=login" method="POST">
+				<form action="UsuariosController.php?acao=login" method="POST">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -51,12 +46,9 @@
 				</form>
 			</div>
 			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="#">Sign Up</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
-				</div>
+				<?php if (isset($_GET["erro"]) && $_GET["erro"]==1): ?>
+					<div class="alert alert-warning" role="alert">E-mail ou senha inválidos</div>
+				<?php endif ?>
 			</div>
 		</div>
 	</div>
