@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 07-Nov-2019 às 23:23
+-- Generation Time: 22-Nov-2019 às 02:23
 -- Versão do servidor: 5.7.21-log
 -- versão do PHP: 7.3.1
 
@@ -36,6 +36,17 @@ CREATE TABLE `questoesbd` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tipoquestao`
+--
+
+CREATE TABLE `tipoquestao` (
+  `id_tioquestao` int(11) NOT NULL,
+  `questao` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuario`
 --
 
@@ -47,6 +58,13 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id_do_usuario`, `nome`, `email`, `senha`) VALUES
+(4, 'bruno', 'asd@asd.com', '7815696ecbf1c96e6894b779456d330e');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -55,6 +73,12 @@ CREATE TABLE `usuario` (
 --
 ALTER TABLE `questoesbd`
   ADD PRIMARY KEY (`id_questao`);
+
+--
+-- Indexes for table `tipoquestao`
+--
+ALTER TABLE `tipoquestao`
+  ADD KEY `fk_tipoquestao` (`id_tioquestao`);
 
 --
 -- Indexes for table `usuario`
@@ -70,7 +94,17 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_do_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_do_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `tipoquestao`
+--
+ALTER TABLE `tipoquestao`
+  ADD CONSTRAINT `fk_tipoquestao` FOREIGN KEY (`id_tioquestao`) REFERENCES `questoesbd` (`id_questao`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
