@@ -1,10 +1,66 @@
 <?php 
 include "QuestDAO.php";
+
 $questDAO = new QuestDAO();
 $lista = $questDAO->buscar();
+
 include "cabecalho.php";
 include "menu.php";
 ?>
+
+<!Doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="width=device=width, initial-scale=1.0">
+  <title> </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="
+  sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/all.min.css">
+</head>
+
+<body>
+  <div class="col-10">
+    <?php mostrarAlerta("susses");
+      mostrarAlerta("danger"); ?>
+    <h3>Usuários</h3>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      <i class="fas fa-user-plus"></i>Novo Usuário
+    </button>
+    </button>
+    <table class="table">
+      <tr>
+        <th>#</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Ações</th>
+      </tr>
+      <?php foreach ($lista as $usuario) : ?>
+        <tr>
+          <td><?= $usuario->id_do_usuario ?></td>
+          <td><?= $usuario->nome ?></td>
+          <td><?= $usuario->email ?></td>
+          <td>
+            <a class="btn btn-danger" href="UsuariosController.php?acao=apagar&id=<?= $usuario->id_do_usuario ?>">
+              <i class="fas fa-user-times"></i>
+            </a>
+
+            <button type="button" class="btn btn-warning editar" data-toggle="modal" data-target="
+                #Editar" data-id="<?= $usuario->id_do_usuario ?>"> <i class="fas fa-user-edit"></i>
+            </button>
+
+            <button type="button" class="btn btn-primary alterar-senha" data-toggle="modal" data-target="
+              #modalSenha" data-id="<?= $usuario->id_do_usuario ?>"> <i class="fas fa-user-lock"></i>
+            </button>
+
+          </td>
+        </tr>
+      <?php endforeach ?>
+    </table>
+  </div>
+  </div>
+  </div>
 			<div class="col-10">	
 				<h3>Questões</h3>
 				<button class="btn btn-primary" data-toggle="modal" data-target="#modalnovo">

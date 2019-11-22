@@ -9,6 +9,7 @@ $lista = $usuarioDAO->buscar();
 
 include "cabecalho.php";
 include "menu.php";
+include "alertas.php";
 
 ?>
 <!Doctype html>
@@ -25,9 +26,8 @@ include "menu.php";
 
 <body>
   <div class="col-10">
-    <div>
-      
-    </div>
+    <?php mostrarAlerta("susses");
+      mostrarAlerta("danger"); ?>
     <h3>Usuários</h3>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
       <i class="fas fa-user-plus"></i>Novo Usuário

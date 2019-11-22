@@ -17,12 +17,14 @@ class UsuarioDAO{
 		$sql = "DELETE FROM usuario WHERE id_do_usuario=$id";
 		$rs = $this->con->query($sql);
 		session_start();
-		if ($rs)
+		if ($rs){
 			$_SESSION["susses"] = "usuário apagado com sucesso";
+		}
 		else{
 			$_SESSION["danger"] = "erro ao apagar o usuário";
 		}
-	}	header("Location:/usuarios");
+		header("Location: /usuarios");
+	}
 
 	public function inserir(){
 		$sql = "INSERT INTO usuario VALUES (0, '$this->nome', '$this->email', md5('$this->senha'))";
