@@ -39,6 +39,11 @@ switch ($acao) {
 		$usuario->login();
 		break;
 
+	case 'sair':
+		$usuario = new UsuarioDAO();
+		$usuario->sair();
+		break;
+
 	default:
 		echo "acao não reconhecida";
 		break;

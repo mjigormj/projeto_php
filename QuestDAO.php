@@ -1,12 +1,15 @@
 <?php
 
-class QuestDAO{
-	public $questao;
+	require "config.php";
 
-	private $con;
+	class QuestDAO{
+
+		public $questao;
+
+		private $con;
 
 	function __construct(){
-		$this->con = mysqli_connect("localhost", "root", "etecia", "bd");
+		$this->con = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     }
     
     public function inserir(){

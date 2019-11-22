@@ -1,8 +1,8 @@
 <?php
-session_start();
-if (!$SESSION["logado"]) header("Location: /");
-include "usuarioDAO.php";
 
+require("verificarLogin.php");
+
+include "UsuarioDAO.php";
 
 $usuarioDAO = new UsuarioDAO();
 $lista = $usuarioDAO->buscar();
@@ -25,6 +25,9 @@ include "menu.php";
 
 <body>
   <div class="col-10">
+    <div>
+      
+    </div>
     <h3>Usuários</h3>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
       <i class="fas fa-user-plus"></i>Novo Usuário
