@@ -5,7 +5,9 @@
 	class QuestDAO{
 
 		public $questao;
-
+		public $id;
+		public $tipo;
+		
 		private $con;
 
 	function __construct(){

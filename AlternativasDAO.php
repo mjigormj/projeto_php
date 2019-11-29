@@ -6,7 +6,7 @@ class AlternativasDAO{
 	public $correta;
 	private $con;
 	function __construct(){
-		$this->con = mysqli_connect("localhost", "root", "etecia", "bd");
+		$this->con = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 	}
 	public function apagar($id, $id_questao){
 		$sql = "DELETE FROM alternativas WHERE idAlternativa=$id";
