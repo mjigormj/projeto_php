@@ -1,4 +1,6 @@
 <?php 
+
+require("verificarLogin.php");
 include "QuestDAO.php";
 
 $questao = new QuestDAO();
