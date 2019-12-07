@@ -8,8 +8,8 @@ switch ($acao) {
 		$questao->enunciado = $_POST["enunciado"];
 		$questao->tipo = $_POST["tipo"];
 		$questao->inserir();
-
 		break;
+		
 	case 'apagar':
 		$questao = new QuestDAO();
 		$id = $_GET["id"];
@@ -21,7 +21,7 @@ switch ($acao) {
 		$questao->id = $_POST["id"];
 		$questao->enunciado = $_POST["enunciado"];
 		$questao->tipo = $_POST["tipo"];
-		$questao->editar();
+		$questao->editarquest();
 		break;
 
 	default:

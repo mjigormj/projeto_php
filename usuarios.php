@@ -12,28 +12,16 @@ include "menu.php";
 include "alertas.php";
 
 ?>
-<!Doctype html>
-<html lang="pt-br">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="width=device=width, initial-scale=1.0">
-  <title> </title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="
-  sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="css/all.min.css">
-</head>
-
-<body>
+<body background="https://www.publicidadenaweb.com/wp-content/uploads/2016/12/Pacman-Wallpaper.jpg">
   <div class="col-10">
     <?php mostrarAlerta("susses");
       mostrarAlerta("danger"); ?>
     <h3>Usuários</h3>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      <i class="fas fa-user-plus"></i>Novo Usuário
+      <i class="fas fa-plus"></i> Novo Usuário
     </button>
-    </button>
-    <table class="table">
+    <table class="table table-dark">
       <tr>
         <th>#</th>
         <th>Nome</th>
@@ -150,7 +138,7 @@ include "alertas.php";
           </button>
           <div class="modal-body">
             <form action="UsuariosController.php?acao=trocarsenha" method="POST">
-              <input type="hidden" name="id" id="campo-id">
+              <input type="hidden" name="id" id="idTrocarSenha">
               <div class="input-group ab-3">
               </div>
 
@@ -158,7 +146,7 @@ include "alertas.php";
               <div class="input-group ab-3">
 
                 <label for="exampleInputPassword1">Senha</label>
-                <input type="password" name="senha" class="form-control" placeholder="senha" aria-label="nome" aria-describe="basic-addans">
+                <input type="password" id="novaSenha" name="senha" class="form-control" placeholder="Nova senha">
               </div>
           </div class="modal-footer">
           <button type="submit" class="btn btn-primary">Salvar</button>
@@ -189,9 +177,9 @@ include "alertas.php";
 </script> -->
 
 <script type="text/javascript">
-	$('.mudar-senha').on('click', function (e) {
-	  	var id = e.currentTarget.getAttribute("data-id");
-	  	document.querySelector("#campo-id").value = id;
+	$('.alterar-senha').on('click', function (e) {
+	  	var id = e.currentTarget.getAttribute("idTrocarSenha");
+	  	document.querySelector("#novaSenha").value = id;
 	});
 	$('.btn-editar').on('click', function (e) {
 	  	var id = e.currentTarget.getAttribute("data-id");

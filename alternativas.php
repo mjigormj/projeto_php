@@ -1,23 +1,28 @@
-<?php 
+<?php
 
-include "verificarLogin.php";
+require("verificarLogin.php");
 include "AlternativasDAO.php";
 include "QuestDAO.php";
+include "alertas.php";
+$idQuestao = $_GET["questao"];
 
-
-$id_questao = $_GET["questao"];
 $alternativas = new AlternativasDAO();
-$alternativas->id_questao = $id_questao;
+$alternativas->idQuestao = $idQuestao;
 $lista = $alternativas->buscar();
-$questoes = new QuestDAO();
-$questoes->id = $id_questao;
-$questoes->buscarPorId();
 
+$questoes = new QuestDAO();
+$questoes->id = $idQuestao;
+$questoes->buscarPorId();
 include "cabecalho.php";
 include "menu.php";
+
+
 ?>
+
 <div class="container">
-	
+
+	<?php mostrarAlerta("success"); ?>
+	<?php mostrarAlerta("danger"); ?>
 	<h2><?= $questoes->enunciado ?></h2>
 
 	<ul class="list-group lista-alternativas">
@@ -25,13 +30,13 @@ include "menu.php";
 			<li class="list-group-item d-flex justify-content-between align-items-center">
 				<?= $alternativa->texto ?>
 				<span class="badge">
-					<button class="btn btn-correta"><i class="fas fa-<?= ($alternativa->correta)?'check':'times'?>"></i></button>
-					<a href="AlternativasController.php?acao=apagar&id=<?= $alternativa->idAlternativa?>&id_questao=<?= $id_questao?>" class="btn btn-danger"><i class="fas fa-trash text-white"></i></a>
+					<button class="btn btn-correta"><i class="fas fa-<?= ($alternativa->correta) ? 'check' : 'times' ?>"></i></button>
+					<a href="AlternativasController.php?acao=apagar&id=<?= $alternativa->idAlternativa ?>&idQuestao=<?= $idQuestao ?>" class="btn btn-danger"><i class="fas fa-trash text-white"></i></a>
 				</span>
 			</li>
 		<?php endforeach ?>
 	</ul>
-	<button class="btn btn-primary" data-toggle="modal" data-target="#modalnovo"><i class="fas fa-plus"></i></button>
+	<button class="btn btn-dark" data-toggle="modal" data-target="#modalnovo"><i class="fas fa-plus"></i></button>
 </div>
 
 <!-- Modal - Alternativas -->
@@ -46,7 +51,7 @@ include "menu.php";
 			</div>
 			<div class="modal-body">
 				<form action="AlternativasController.php?acao=inserir" method="POST">
-					<input type="hidden" name="id_questao" value="<?= $id_questao ?>">
+					<input type="hidden" name="idQuestao" value="<?= $idQuestao ?>">
 					<div class="form-group">
 						<label for="texto">Texto</label>
 						<input type="text" name="texto" class="form-control" id="texto" placeholder="texto da alternativa">
@@ -59,11 +64,11 @@ include "menu.php";
 							</label>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-					<button type="submit" class="btn btn-primary">Salvar</button>
-				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				<button type="submit" class="btn btn-primary">Salvar</button>
+			</div>
 			</form>
 		</div>
 	</div>

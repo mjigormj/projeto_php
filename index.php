@@ -16,6 +16,14 @@ switch ($_SERVER["PATH_INFO"]) {
 		require 'questoes.php';
 		break;
 
+	case "/alternativas":
+		require "alternativas.php";
+		break;
+
+	case "/construcao":
+		require "construcao.php";
+		break;
+
 	default:
 		echo "Erro 404 - Pagina não encontrada";
 		break;

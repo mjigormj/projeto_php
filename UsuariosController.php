@@ -11,6 +11,7 @@ switch ($acao) {
 		$usuario->senha = $_POST["senha"];
 		$usuario->inserir();
 		break;
+		
 	case 'apagar':
 		$usuario = new UsuarioDAO();
 		$id = $_GET["id"];
