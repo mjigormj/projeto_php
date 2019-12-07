@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 <?php
 require ("verificarLogin.php");
+=======
+<?php 
+
+require("verificarLogin.php");
+>>>>>>> 0facc086cb251a141c4e1d45344b400d1873224b
 include "QuestDAO.php";
 include "cabecalho.php";
 include "menu.php";
