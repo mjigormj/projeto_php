@@ -2,10 +2,10 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: 05-Dez-2019 às 21:33
--- Versão do servidor: 5.7.25
--- versão do PHP: 7.1.26
+-- Host: 127.0.0.1:3307
+-- Generation Time: 08-Dez-2019 às 08:34
+-- Versão do servidor: 10.1.38-MariaDB
+-- versão do PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,15 +35,22 @@ CREATE TABLE `alternativas` (
   `correta` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `alternativas`
+--
+
+INSERT INTO `alternativas` (`idAlternativas`, `idQuestao`, `texto`, `correta`) VALUES
+(0, 11, 'sÃ£o paulo', 1);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `questoesbd`
+-- Estrutura da tabela `questoes`
 --
 
 CREATE TABLE `questoes` (
   `idQuestao` int(11) NOT NULL,
-  `tipo` int(200) NOT NULL,
+  `tipo` text NOT NULL,
   `enunciado` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -52,15 +59,16 @@ CREATE TABLE `questoes` (
 --
 
 INSERT INTO `questoes` (`idQuestao`, `tipo`, `enunciado`) VALUES
-(10, 0, '');
+(15, 'Dissertativa', 'macaco'),
+(16, 'Qual a capital de SP', 'Dissertativa');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura da tabela `usuarios`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE `usuarios` (
   `idUsuario` int(11) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
@@ -68,12 +76,12 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`) VALUES
+INSERT INTO `usuarios` (`idUsuario`, `nome`, `email`, `senha`) VALUES
 (4, 'bruno', 'asd@asd.com', '7815696ecbf1c96e6894b779456d330e'),
-(5, 'logislaine', 'tonem@a.com', '202cb962ac59075b964b07152d234b70');
+(7, 'Michael Lima', 'nearwiner1234567@gmail.com', '79096fde161607cb4959836d3594f7e4');
 
 --
 -- Indexes for dumped tables
@@ -84,7 +92,6 @@ INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`) VALUES
 --
 ALTER TABLE `alternativas`
   ADD PRIMARY KEY (`idAlternativas`);
-  ADD KEY 'alternativa_questao' ('idQuestao');
 
 --
 -- Indexes for table `questoes`
@@ -93,9 +100,9 @@ ALTER TABLE `questoes`
   ADD PRIMARY KEY (`idQuestao`);
 
 --
--- Indexes for table `usuario`
+-- Indexes for table `usuarios`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`idUsuario`);
 
 --
@@ -103,32 +110,16 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT for table `alternativas`
---
-ALTER TABLE `alternativas`
-  MODIFY `idAlternativas` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `questoes`
 --
 ALTER TABLE `questoes`
-  MODIFY `idQuestao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idQuestao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT for table `usuarios`
 --
-ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `tipoquestao`
---
-ALTER TABLE `alternativas`
-  ADD CONSTRAINT `alternativa_questao` FOREIGN KEY (`idQuestao`) REFERENCES `questoes` (`idQuestao`) ON DELETE CASCADE;
+ALTER TABLE `usuarios`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
