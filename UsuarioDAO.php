@@ -15,7 +15,7 @@ class UsuarioDAO{
 	}
 
 	public function apagar($id){
-		$sql = "DELETE FROM usuarios WHERE id_do_usuario=$id";
+		$sql = "DELETE FROM usuarios WHERE idUsuario=$id";
 		$rs = $this->con->query($sql);
 		session_start();
 		if ($rs){
@@ -28,7 +28,7 @@ class UsuarioDAO{
 	}
 
 	public function inserir(){
-		$sql = "INSERT INTO usuario VALUES (0, '$this->nome', '$this->email', md5('$this->senha'))";
+		$sql = "INSERT INTO usuarios VALUES (0, '$this->nome', '$this->email', md5('$this->senha'))";
 		$rs = $this->con->query($sql);
 		if ($rs)
 			header("Location: /usuarios");
@@ -45,8 +45,9 @@ class UsuarioDAO{
 
 		return $listaDeUsuarios;
 	}
+	
 	public function trocarsenha($id, $senha){
-		$sql = "UPDATE usuarios SET senha = md5('$senha') WHERE id_do_usuario=$id";
+		$sql = "UPDATE usuarios SET senha = md5('$senha') WHERE idUsuario=$id";
 		$rs = $this->con->query($sql);
 		if ($rs) header("Location: /usuarios");
 		else echo $this->con->error;
@@ -54,10 +55,11 @@ class UsuarioDAO{
 
 	public function editarusuario($id, $nome, $email)
 	{
-		$sql = "UPDATE usuario SET nome='$nome', email='$email' WHERE id_do_usuario=$id";
+		$sql = "UPDATE usuarios SET nome='$nome', email='$email' WHERE idUsuario='$id'";
 		$rs = $this->con->query($sql);
+		session_start(); 
 		echo $sql;
-		if ($rs) header("Location:/usuarios");
+		if ($rs) header("Location:/usuario");
 		else echo $this->con->error;
 	}
 

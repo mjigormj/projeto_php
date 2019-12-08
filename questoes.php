@@ -1,18 +1,13 @@
-<<<<<<< HEAD
 <?php
-require ("verificarLogin.php");
-=======
-<?php 
+	require("verificarLogin.php");
 
-require("verificarLogin.php");
->>>>>>> 0facc086cb251a141c4e1d45344b400d1873224b
-include "QuestDAO.php";
-include "cabecalho.php";
-include "menu.php";
-include "alertas.php";
+	include "QuestDAO.php";
+	include "cabecalho.php";
+	include "menu.php";
+	include "alertas.php";
 
-$questao = new QuestDAO();
-$lista = $questao->buscar();
+	$questao = new QuestDAO();
+	$lista = $questao->buscar();
 ?>
 
 <body background="https://www.heroncid.com.br/wp-content/uploads/2018/02/interrogacao.jpg">
@@ -55,7 +50,7 @@ $lista = $questao->buscar();
 
 
 
-	<!-- Modal Novo -->
+	<!-- Modal Nova Questão -->
 	<div class="modal fade" id="modalnovo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -112,9 +107,19 @@ $lista = $questao->buscar();
 							<label for="nome">Enunciado</label>
 							<input type="text" name="enunciado" class="form-control" id="novoenunciado" placeholder="enunciado">
 						</div>
-						<div class="form-group">
+
+						<!--<div class="form-group">
 							<label for="email">Tipo</label>
 							<input type="text" name="tipo" class="form-control" id="novotipo" placeholder="tipo">
+						</div>-->
+
+						<div class="form-group">
+							<label for="text">Tipo da questão</label>
+							<select class="form-control" name="tipo" id="novotipo">
+							<option>Alternativa</option>
+							<option>Dissertativa</option>
+							<option>Completar</option>
+							</select>
 						</div>
 				</div>
 				<div class="modal-footer">

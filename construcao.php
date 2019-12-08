@@ -5,7 +5,7 @@ include "menu.php";
 include "alertas.php";
 ?>
 
-<body background="img/babyYoda.png">
+<body>
     <h2>Estamos em construção</h2>
     <img src="img/babyYoda.png">
 </body>

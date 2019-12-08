@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 29-Nov-2019 às 02:23
--- Versão do servidor: 5.7.21-log
--- versão do PHP: 7.3.1
+-- Host: localhost
+-- Generation Time: 05-Dez-2019 às 21:33
+-- Versão do servidor: 5.7.25
+-- versão do PHP: 7.1.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,7 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `alternativas` (
-  `id_alternativas` int(11) NOT NULL
+  `idAlternativas` int(11) NOT NULL,
+  `idQuestao` int(11) NOT NULL,
+  `texto` varchar(200) NOT NULL,
+  `correta` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -38,30 +41,18 @@ CREATE TABLE `alternativas` (
 -- Estrutura da tabela `questoesbd`
 --
 
-CREATE TABLE `questoesbd` (
-  `id_questao` int(11) NOT NULL,
-  `tipo` int(11) NOT NULL,
-  `questao` varchar(500) NOT NULL
+CREATE TABLE `questoes` (
+  `idQuestao` int(11) NOT NULL,
+  `tipo` int(200) NOT NULL,
+  `enunciado` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `questoesbd`
+-- Extraindo dados da tabela `questoes`
 --
 
-INSERT INTO `questoesbd` (`id_questao`, `tipo`, `questao`) VALUES
+INSERT INTO `questoes` (`idQuestao`, `tipo`, `enunciado`) VALUES
 (10, 0, '');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `tipoquestao`
---
-
-CREATE TABLE `tipoquestao` (
-  `id_tioquestao` int(11) NOT NULL,
-  `tipo` varchar(500) NOT NULL,
-  `FKTipoQuestao` int(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -70,7 +61,7 @@ CREATE TABLE `tipoquestao` (
 --
 
 CREATE TABLE `usuario` (
-  `id_do_usuario` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `senha` varchar(200) NOT NULL
@@ -80,7 +71,7 @@ CREATE TABLE `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id_do_usuario`, `nome`, `email`, `senha`) VALUES
+INSERT INTO `usuario` (`idUsuario`, `nome`, `email`, `senha`) VALUES
 (4, 'bruno', 'asd@asd.com', '7815696ecbf1c96e6894b779456d330e'),
 (5, 'logislaine', 'tonem@a.com', '202cb962ac59075b964b07152d234b70');
 
@@ -92,26 +83,20 @@ INSERT INTO `usuario` (`id_do_usuario`, `nome`, `email`, `senha`) VALUES
 -- Indexes for table `alternativas`
 --
 ALTER TABLE `alternativas`
-  ADD PRIMARY KEY (`id_alternativas`);
+  ADD PRIMARY KEY (`idAlternativas`);
+  ADD KEY 'alternativa_questao' ('idQuestao');
 
 --
--- Indexes for table `questoesbd`
+-- Indexes for table `questoes`
 --
-ALTER TABLE `questoesbd`
-  ADD PRIMARY KEY (`id_questao`);
-
---
--- Indexes for table `tipoquestao`
---
-ALTER TABLE `tipoquestao`
-  ADD PRIMARY KEY (`id_tioquestao`) USING BTREE,
-  ADD KEY `FKTipoQuestao` (`FKTipoQuestao`) USING BTREE;
+ALTER TABLE `questoes`
+  ADD PRIMARY KEY (`idQuestao`);
 
 --
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_do_usuario`);
+  ADD PRIMARY KEY (`idUsuario`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -121,25 +106,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `alternativas`
 --
 ALTER TABLE `alternativas`
-  MODIFY `id_alternativas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAlternativas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `questoesbd`
+-- AUTO_INCREMENT for table `questoes`
 --
-ALTER TABLE `questoesbd`
-  MODIFY `id_questao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `tipoquestao`
---
-ALTER TABLE `tipoquestao`
-  MODIFY `id_tioquestao` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `questoes`
+  MODIFY `idQuestao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_do_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -148,8 +127,8 @@ ALTER TABLE `usuario`
 --
 -- Limitadores para a tabela `tipoquestao`
 --
-ALTER TABLE `tipoquestao`
-  ADD CONSTRAINT `fk_tipoquestoes` FOREIGN KEY (`FKTipoQuestao`) REFERENCES `questoesbd` (`id_questao`);
+ALTER TABLE `alternativas`
+  ADD CONSTRAINT `alternativa_questao` FOREIGN KEY (`idQuestao`) REFERENCES `questoes` (`idQuestao`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
